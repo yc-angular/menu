@@ -1,6 +1,0 @@
-<ul [ngStyle]="style()">
-  <li *ngFor="let item of filteredMenu()" [ngClass]="{ active: isActive(item)">
-    <a (click)="toggleMenuItem(item)"><span>{{ item.name }}</span></a>
-    <yca-menu [items]="item.subs" [parent]="item" [level]="level + 1" [filter]="filter" [active]="active" [ulStyle]="ulStyle"></yca-menu>
-  </li>
-</ul>

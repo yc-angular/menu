@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
   selector: 'yca-menu',
   template: `<ul [class]="'lv-' + level">
   <li *ngFor="let item of filteredMenu()" [ngClass]="{ active: isActive(item), 'has-sub': item.children && item.children.length }">
-    <a (click)="toggleMenuItem(item)"><span>{{ item.name }}</span></a>
+    <a (click)="toggleMenuItem(item)"><span>{{ item.label }}</span></a>
     <yca-menu *ngIf="item.children" 
       [ngClass]="{ active: isActive(item) }"
       [items]="item.children" 
@@ -25,7 +25,6 @@ export class MenuComponent {
   @Input() active: (item: IMenuItem) => boolean;
   @Input() level: number = 0;
   @Input() parent: IMenuItem = null;
-  @Input() heightPerItem: number = 44;
 
   sub: Subscription;
 
