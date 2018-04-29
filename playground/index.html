@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>@yca/menu Playground</title>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Polyfill(s) for older browsers -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('.playground/index.js').catch(function (err) { console.error(err); });
+  </script>
+  <style>
+    yca-menu {
+      position: relative;
+      margin: 0;
+      font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
+      line-height: 1;
+    }
+
+    .lv-0 {
+      width: 193px;
+    }
+
+    .align-right {
+      float: right;
+    }
+
+    yca-menu ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: block;
+    }
+
+    yca-menu ul li {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    yca-menu ul li a {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    yca-menu ul.lv-0>li>a {
+      color: #dddddd;
+      text-transform: uppercase;
+      display: block;
+      padding: 20px;
+      border-top: 1px solid #000000;
+      border-left: 1px solid #000000;
+      border-right: 1px solid #000000;
+      background: #222222;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      letter-spacing: 1px;
+      font-size: 16px;
+      font-weight: 300;
+      -webkit-transition: all 0.25s ease-in;
+      -moz-transition: all 0.25s ease-in;
+      -ms-transition: all 0.25s ease-in;
+      -o-transition: all 0.25s ease-in;
+      transition: all 0.25s ease-in;
+      position: relative;
+    }
+
+    yca-menu>ul>li:first-child>a {}
+
+    yca-menu>ul>li:last-child>a {
+      border-bottom: 1px solid #000000;
+    }
+
+    yca-menu>ul>li:hover>a,
+    yca-menu>ul>li.open>a,
+    yca-menu>ul>li.active>a {
+      background: #151515;
+      color: #ffffff;
+    }
+
+    yca-menu ul>li.has-sub>a::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 13px solid #000000;
+      border-botom: 13px solid transparent;
+      border-left: 166px solid transparent;
+      border-right: 26px solid transparent;
+      left: 0;
+      bottom: -13px;
+      bottom: 0px;
+      z-index: 1;
+      opacity: 0;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -ms-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      transition: all .2s ease;
+    }
+
+    yca-menu ul>li.has-sub>a::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 13px solid #151515;
+      border-botom: 13px solid transparent;
+      border-left: 166px solid transparent;
+      border-right: 26px solid transparent;
+      left: 0;
+      bottom: -12px;
+      bottom: -1px;
+      z-index: 3;
+      opacity: 0;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -ms-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      transition: all .2s ease;
+    }
+
+    yca-menu ul>li.has-sub::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-top-color: #dddddd;
+      z-index: 2;
+      right: 20px;
+      top: 24.5px;
+      pointer-events: none;
+    }
+
+    yca-menu ul>li:hover::after,
+    yca-menu ul>li.active::after,
+    yca-menu ul>li.open::after {
+      border-top-color: #ffffff;
+    }
+
+    yca-menu ul>li.has-sub.active>a::after {
+      opacity: 1;
+      bottom: -13px;
+    }
+
+    yca-menu ul>li.has-sub.active>a::before {
+      opacity: 1;
+      bottom: -12px;
+    }
+
+    yca-menu>ul {
+      transition: all 250ms ease-in-out;
+      overflow: hidden;
+      max-height: 0;
+    }
+
+    yca-menu.active>ul {
+      max-height: 1000px;
+    }
+
+    yca-menu .lv-1 li {
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+    }
+
+    yca-menu ul.lv-1>li a {
+      background: #5cb85c;
+      display: block;
+      position: relative;
+      font-size: 15px;
+      padding: 14px 20px;
+      border-bottom: 1px solid darkseagreen;
+      color: whitesmoke;
+      font-weight: 300;
+      -webkit-transition: all 0.25s ease-in;
+      -moz-transition: all 0.25s ease-in;
+      -ms-transition: all 0.25s ease-in;
+      -o-transition: all 0.25s ease-in;
+      transition: all 0.25s ease-in;
+    }
+
+    yca-menu ul.lv-1 li:first-child>a {
+      padding-top: 18px;
+    }
+
+    yca-menu ul.lv-1 ul li {
+      border: 0;
+    }
+
+    yca-menu ul.lv-1 li:hover>a,
+    yca-menu ul.lv-1 li.active>a {
+      background: forestgreen;
+      color: whitesmoke;
+    }
+
+    yca-menu ul.lv-1>li.has-sub.active>a {
+      border-bottom-color: forestgreen;
+    }
+
+    yca-menu ul.lv-1>li.has-sub>a::after {
+      border-top: 13px solid forestgreen;
+    }
+
+    yca-menu ul.lv-1>li.has-sub>a::before {
+      border-top: 13px solid forestgreen;
+    }
+
+    yca-menu ul.lv-2 li a {
+      padding-left: 30px;
+    }
+
+    yca-menu ul.lv-1>li.has-sub::after {
+      top: 18.5px;
+      border-width: 6px;
+      border-top-color: #777777;
+    }
+
+    yca-menu ul.lv-1>li:hover::after,
+    yca-menu ul.lv-1>li.active::after,
+    yca-menu ul.lv-1>li.open::after {
+      border-top-color: #666666;
+    }
+
+    yca-menu ul.lv-2>li a {
+      background: #ddd;
+      display: block;
+      position: relative;
+      font-size: 15px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #e2e2e2;
+      color: forestgreen;
+      font-weight: 300;
+      -webkit-transition: all 0.25s ease-in;
+      -moz-transition: all 0.25s ease-in;
+      -ms-transition: all 0.25s ease-in;
+      -o-transition: all 0.25s ease-in;
+      transition: all 0.25s ease-in;
+    }
+
+    yca-menu ul.lv-2 > li:hover>a,
+    yca-menu ul.lv-2 > li.active>a {
+      background: darkseagreen;
+      color: whitesmoke;
+    }
+  </style>
+</head>
+
+<body>
+  <app>Loading AppComponent content here ...</app>
+</body>
+
+</html>

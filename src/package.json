@@ -1,0 +1,23 @@
+{
+  "name": "@yca/menu",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yc-angular/menu.git"
+  },
+  "author": {
+    "name": "Yu Chen",
+    "email": "yu.chen@live.ie"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yc-angular/menu.git/issues"
+  },
+  "main": "menu.umd.js",
+  "module": "menu.js",
+  "jsnext:main": "menu.js",
+  "typings": "menu.d.ts"
+}
