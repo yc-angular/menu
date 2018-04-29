@@ -1,5 +1,9 @@
 # @yca/menu
 
+Angular side menu
+
+demo: [https://stackblitz.com/edit/yca-menu](https://stackblitz.com/edit/yca-menu)
+
 ## Installation
 
 To install this library, run:
