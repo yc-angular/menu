@@ -1,14 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { IMenuItem } from './interface';
 import { MenuSubject } from './subject';
 import { Subscription } from 'rxjs/Subscription';
+import { SlideDirective } from '@yca/slide';
 
 @Component({
   selector: 'yca-menu',
-  template: `<ul [class]="'lv-' + level">
+  template: `<ul #slide="ycaSlide" [class]="'lv-' + level" [ycaSlide]="isParentActive()">
   <li *ngFor="let item of filteredMenu()" [ngClass]="{ active: isActive(item), 'has-sub': item.children && item.children.length }">
     <a (click)="toggleMenuItem(item)"><span>{{ item.label }}</span></a>
-    <yca-menu *ngIf="item.children" 
+    <yca-menu *ngIf="item.children"
       [ngClass]="{ active: isActive(item) }"
       [items]="item.children" 
       [parent]="item" 
@@ -24,7 +25,9 @@ export class MenuComponent {
   @Input() filter: (items: IMenuItem[]) => IMenuItem[];
   @Input() active: (item: IMenuItem) => boolean;
   @Input() level: number = 0;
-  @Input() parent: IMenuItem = null;
+  @Input() parent: IMenuItem;
+
+  @ViewChild('slide') slide: SlideDirective;
 
   sub: Subscription;
 
@@ -62,6 +65,11 @@ export class MenuComponent {
   isChildActive(item: IMenuItem): boolean {
     if (!item.children || !item.children.length) return false;
     return item.children.map(x => this.isActive(x)).reduce((a, b) => a || b, false);
+  }
+
+  isParentActive() {
+    if (this.parent) return this.isActive(this.parent);
+    return true;
   }
 
 }
