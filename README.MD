@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from '@yca/menu';
+import { MenuModule } from '@yca/menu';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { SampleModule } from '@yca/menu';
     BrowserModule,
 
     // Specify your library as an import
-    LibraryModule
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -47,10 +47,36 @@ Once your library is imported, you can use its components, directives and pipes 
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+<yca-menu [items]="items"></yca-menu>
+```
+
+## Interfaces
+```ts
+interface IMenuItem {
+  label: string;
+  children?: IMenuItem[];
+  __active?: boolean;
+  path?: string;
+  [x: string]: any;
+}
+```
+
+## Inputs
+```ts
+@Input() items: IMenuItem[] = [];
+@Input() filter: (items: IMenuItem[]) => IMenuItem[];
+@Input() active: (item: IMenuItem) => boolean;
+```
+
+## Subject
+```ts
+constructor(
+  public ms: MenuSubject,
+) {
+  this.ms.subscribe(x => {
+    console.log(x.path);
+  })
+}
 ```
 
 ## Development
