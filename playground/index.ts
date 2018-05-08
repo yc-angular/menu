@@ -27,7 +27,8 @@ class AppComponent {
     {
       label: '系统配置',
       path: '/dashboard/configuration',
-      role: 'admin'
+      role: 'admin',
+      badge: () => 2,
     },
     {
       label: '商城管理',
