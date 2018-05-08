@@ -1,6 +1,6 @@
 export interface IMenuItem {
   label: string;
-  badge(): number;
+  badge?: () => number;
   children?: IMenuItem[];
   __active?: boolean;
   path?: string;
