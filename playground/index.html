@@ -48,6 +48,24 @@
     yca-menu ul li a {
       text-decoration: none;
       cursor: pointer;
+      display: flex!important;
+      align-items: center;
+    }
+
+    yca-menu ul li a span {
+      flex-grow: 1;
+    }
+
+    yca-menu ul li a i {
+      font-weight: normal;
+      background: red;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
     }
 
     yca-menu ul.lv-0>li>a {
@@ -70,6 +88,7 @@
       transition: all 0.25s ease-in;
       position: relative;
     }
+
 
     yca-menu>ul>li:first-child>a {}
 
@@ -247,8 +266,8 @@
       transition: all 0.25s ease-in;
     }
 
-    yca-menu ul.lv-2 > li:hover>a,
-    yca-menu ul.lv-2 > li.active>a {
+    yca-menu ul.lv-2>li:hover>a,
+    yca-menu ul.lv-2>li.active>a {
       background: darkseagreen;
       color: whitesmoke;
     }

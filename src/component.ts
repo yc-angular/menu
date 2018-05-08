@@ -8,7 +8,7 @@ import { SlideDirective } from '@yca/slide';
   selector: 'yca-menu',
   template: `<ul #slide="ycaSlide" [class]="'lv-' + level" [ycaSlide]="isParentActive()">
   <li *ngFor="let item of filteredMenu()" [ngClass]="{ active: isActive(item), 'has-sub': item.children && item.children.length }">
-    <a (click)="toggleMenuItem(item)"><span>{{ item.label }}</span></a>
+    <a (click)="toggleMenuItem(item)"><span>{{ item.label }}</span><i *ngIf="item.badge">{{ item.badge() }}</i></a>
     <yca-menu *ngIf="item.children"
       [ngClass]="{ active: isActive(item) }"
       [items]="item.children" 
